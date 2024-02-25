@@ -1,0 +1,58 @@
+@font-face{
+    font-family: Poppins-Light;
+    src: url('../Poppins/Poppins-Light.ttf');
+}
+
+@font-face{
+    font-family: Poppins-Bold;
+    src: url('../Poppins/Poppins-Bold.ttf');
+}
+
+@font-face{
+    font-family: Poppins-Extralight;
+    src: url('../Poppins/Poppins-ExtraLight.ttf');
+}
+
+@font-face{
+    font-family: Poppins-Extrabold;
+    src: url('../Poppins/Poppins-ExtraBold.ttf');
+}
+
+@font-face{
+    font-family: Syne;
+    src: url('../Syne/Syne-VariableFont_wght.ttf');
+}
+
+@font-face{
+    font-family: Lilita;
+    src: url('../Lilita/LilitaOne-Regular.ttf');
+}
+
+@font-face{
+    font-family: Pacifico;
+    src: url('../Pacifico/Pacifico-Regular.ttf');
+}
+
+@font-face {
+    font-family: Dancing-Regular;
+    src: url('../Dancing/static/DancingScript-Regular.ttf');
+}
+
+@font-face {
+    font-family: Dancing;
+    src: url('../Dancing/DancingScript-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Dancing-Bold;
+    src: url('../Dancing/static/DancingScript-Bold.ttf');
+}
+
+@font-face {
+    font-family: Caprasimo;
+    src: url('../Caprasimo/Caprasimo-Regular.ttf');
+}
+@font-face{
+    font-family: Agdasima;
+    src: url('../Agdasima/Agdasima-Regular.ttf');
+}

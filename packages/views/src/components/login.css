@@ -1,0 +1,83 @@
+:root{
+    --width-screens: 35%;
+    --border-radius: 10px;
+}
+form{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(244, 244, 244);
+}
+
+form header{
+    /* border: 1px solid black; */
+    width: var(--width-screens);
+    height: 90px;
+    background-color: white;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+form header [data-text-banner]{
+    opacity: 0.4;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+}
+
+form aside{
+    /* border: 1px solid black; */
+    width: var(--width-screens);
+    height: 460px;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    background-color: white;
+}
+
+form aside label.display-column {
+    width: 80%;
+    height: 12vh;
+}
+form aside label[data-remember-box]{
+    width: 80%;
+}
+form aside label[data-remember-box] [data-check]{
+    font-size: 0.8rem;
+    padding: 2px 10px;
+}
+form aside label.display-column span{
+    font-size: 0.8rem;
+    opacity: 0.4;
+}
+form aside label.display-column input{
+    outline: none;
+    padding: 16px 10px;
+    border-color: rgb(201, 204, 205);
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+form [data-buttons]{
+    width: 100%;
+    height: 18vh;
+}
+
+form input[data-submit-datas]{
+    padding: 16px 10px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(42, 41, 41);
+}
+
+form a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.8rem;
+}
+form aside p{
+    font-weight: bold;
+    font-size: 0.8rem;
+}
