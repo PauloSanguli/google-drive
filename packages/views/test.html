@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="src/utils/fontawesome-free-5.15.4-web/css/all.min.css">
 </head>
 <body>
-    <i class="fas fa-recycle"></i>
+    <div id="div" style="width: 100%;height: 100px;background-color: aqua;"></div>
+
+    <script>
+        var divElement = document.getElementById("div")
+        var stateDiv = 100
+        setInterval(() => {
+            if(stateDiv > 0) {
+                stateDiv -= 11
+                divElement.style.width = `${stateDiv}%`
+            }else{
+                clearInterval() 
+            }
+        }, 1000)
+    </script>
 </body>
 </html>

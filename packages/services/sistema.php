@@ -33,8 +33,8 @@
             
             $checando_espaco = check_storage($_filesize,$usuario_id[0],$this->connection_db);
             if($checando_espaco){
-                execute_query("SET SESSION interactive_timeout = 28800",$this->connection_db);
-                execute_query("SET @@LOCAL.wait_timeout=5000",$this->connection_db);
+                execute_query("SET SESSION interactive_timeout = 22228800",$this->connection_db);
+                execute_query("SET @@LOCAL.wait_timeout=500000000",$this->connection_db);
 
                 $fp = fopen($_file_tmp, "rb");
                 $_file_readed = fread($fp, $_filesize);
@@ -47,13 +47,14 @@
                 if($response_db){
                     $storage = $this->space_storage()["free"]-convertData($_filesize);
                     query_update_storage($storage, $usuario_id[0], $this->connection_db);
-                    echo "arquivo armazenado";
+                    $response = "arquivo armazenado";
                 }else{
-                    echo "arquivo não armazenado";
+                    $response = "arquivo não armazenado";
                 }
             }else{
-                echo "espaco indisponivel";
+                $response = "espaço indisponível";
             }
+            return $response;
         }
 
         public function ver_arquivos(){

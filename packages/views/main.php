@@ -126,6 +126,28 @@
                 <input type="submit" value="add file" class="btnAdd">
             </form>
         </div>
+
+        <?php
+            if(isset($_GET["responseProcess"])){
+                $messageResponse = $_GET["messageResponse"];
+                $nameColorBoxMessage = $_GET["nameColorBoxMessage"];
+
+                $codsColors = Array(
+                    "red"=>"rgb(235, 65, 88)",
+                    "green"=>"rgb(54, 234, 41)",
+                    "black"=>"rgb(0,0,0)"
+                );
+                $colorShadow = $codsColors["black"];
+                $colorProgressBar = $codsColors[$nameColorBoxMessage];
+                echo "<div id='box-message' class='display-column justify-space-between align-flex-start' style='box-shadow: 0 0 8px $colorShadow;'>
+                        <div id='box-content' class='display-row justify-space-around align-center'>
+                        <p>$messageResponse</p>
+                        <button onClick='closeBoxMessage()'><img src='../../assets/cancelar.png'></button>
+                        </div>
+                        <div id='box-progress' style='background: $colorProgressBar;'></div>
+                    </div>";
+            }
+        ?>
     </main>
 
     <script>
@@ -180,6 +202,29 @@
             transformText([paragraphFree, paragraphUsed])
         }
         formateFloatsDatas()
+
+        var animateBoxMessage = () => {
+            const progressBar = document.getElementById("box-progress")
+            let stateProgress = 100
+
+            progressBar.style.transition = "all .5s"
+            setInterval(() => {
+                if(stateProgress > 0) {
+                    stateProgress -= 20
+
+                    console.log(stateProgress)
+                    progressBar.style.width = `${stateProgress}%`
+                }else{
+                    clearInterval()
+                    closeBoxMessage()
+                }
+            }, 1000)
+        }
+        animateBoxMessage()
+
+        var closeBoxMessage = () => {
+            document.getElementById("box-message").style.left = "-100%"
+        }
     </script>
 </body>
 </html>

@@ -15,9 +15,10 @@
         $_filesize = $_FILES["fih"]["size"];
         $_file_tmp = $_FILES["fih"]["tmp_name"];
         
-        $sistema->armazenar_arquivo($_file_tmp, $_filesize, $_filename);
+        $messageResponse = $sistema->armazenar_arquivo($_file_tmp, $_filesize, $_filename);
+        $response = json_encode($messageResponse);
 
-        // header("location: packages/views/main.php");
+        header("location: packages/views/main.php?response=$response");
     }
     else if(isset($_GET["sign_in"])){
         // create the account
