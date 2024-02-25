@@ -7,7 +7,8 @@
     $storage_user = $manager_db->space_storage();
     // echo "<br><p>aa</p>";
     // echo 312*$manager_db->tx_mb;
-    $percent_usage = (int) ($storage_user["used"]/$manager_db->space_total_storage)*100;
+    $percent_usage = ($storage_user["used"]/$manager_db->space_total_storage)*100;
+    // echo $percent_usage;
     if($percent_usage>100){
         $percent_usage = 100;
     }else{
@@ -64,12 +65,12 @@
                     <p>free 20MB</p>
                     <p>total files 23</p> -->
                     <?php
-                        $_used_formated = (int) $storage_user['used'];
-                        $_free_formated = (int) $storage_user['free'];
+                        $_used_formated = $storage_user['used'];
+                        $_free_formated = $storage_user['free'];
                         $_files_c = $manager_db->count_files();
 
-                        echo "<p>used {$_used_formated}MB</p>";
-                        echo "<p>free {$_free_formated}MB</p>";
+                        echo "<p>used <span id='field-used'>{$_used_formated}</span>MB</p>";
+                        echo "<p>free <span id='field-free'>{$_free_formated}</span>MB</p>";
                         echo "<p>total files $_files_c</p>";
                         echo "<div class='color-storage' style='background: $color_progress;'></div>";
                         echo "<div class='color-storage'></div>";
@@ -165,6 +166,20 @@
             formScreen.style.transform = `translateY(${transformElement}%)`
         })
         label.forEach((element) => element.classList.add("display-column"))
+
+        var transformText = (elements) => {
+            for (const element of elements) {
+                element.innerText = Number(element.textContent).toFixed(2)
+            }
+        }
+
+        var formateFloatsDatas = () => {
+            const paragraphUsed = document.getElementById("field-used")
+            const paragraphFree = document.getElementById("field-free")
+
+            transformText([paragraphFree, paragraphUsed])
+        }
+        formateFloatsDatas()
     </script>
 </body>
 </html>

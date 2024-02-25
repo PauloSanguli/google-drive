@@ -9,7 +9,7 @@
         // $_storage *= 1024;
 
         if($_filesize <= $_storage){
-            query_update_storage($_storage-=$_filesize, $usuario_id, $conn);
+            // query_update_storage($_storage-=$_filesize, $usuario_id, $conn);
             return true;
         }else{
             return false;

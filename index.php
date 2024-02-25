@@ -17,7 +17,7 @@
         
         $sistema->armazenar_arquivo($_file_tmp, $_filesize, $_filename);
 
-        header("location: packages/views/main.php");
+        // header("location: packages/views/main.php");
     }
     else if(isset($_GET["sign_in"])){
         // create the account
