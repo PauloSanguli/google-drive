@@ -34,7 +34,7 @@
             <nav class="display-row align-center justify-space-between">
                 <a href="logout.php">Logout <i class="fas fa-door-open"></i></a>
                 <a href=""> Home <i class="fas fa-home"></i></a>
-                <a href="">Account <i class="fas fa-user"></i></a>
+                <button id="btn-show-side-bar">Account <i class="fas fa-user"></i></button>
             </nav>
             <button>Settings <i class="fas fa-searchengin"></i></button>
         </header>
@@ -127,10 +127,14 @@
             </form>
         </div>
 
+        <div id="side-account-info" class="display-row justify-flex-start">
+            <aside id="screen-content"></aside>
+        </div>
+
         <?php
-            if(isset($_GET["responseProcess"])){
-                $messageResponse = $_GET["messageResponse"];
-                $nameColorBoxMessage = $_GET["nameColorBoxMessage"];
+            if(isset($_GET["message"],$_GET["color"])){
+                $messageResponse = $_GET["message"];
+                $nameColorBoxMessage = $_GET["color"];
 
                 $codsColors = Array(
                     "red"=>"rgb(235, 65, 88)",
@@ -225,6 +229,21 @@
         var closeBoxMessage = () => {
             document.getElementById("box-message").style.left = "-100%"
         }
+
+        var stateBar = true
+        document.getElementById("btn-show-side-bar").addEventListener("click", () => {
+            alert("tester")
+            let aside = document.getElementById("screen-content")
+            let div = document.getElementById("side-account-info")
+            if(stateBar){
+                aside.style.transform = "translateX(0%)"
+                div.style.display = "row"
+            }else{
+                aside.style.transform = "translateX(-100%)"
+                div.style.display = "none"
+            }
+            stateBar = !stateBar
+        })
     </script>
 </body>
 </html>

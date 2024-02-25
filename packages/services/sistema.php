@@ -48,13 +48,16 @@
                     $storage = $this->space_storage()["free"]-convertData($_filesize);
                     query_update_storage($storage, $usuario_id[0], $this->connection_db);
                     $response = "arquivo armazenado";
+                    $color = "green";
                 }else{
                     $response = "arquivo não armazenado";
+                    $color = "red";
                 }
             }else{
-                $response = "espaço indisponível";
+                    $color = "red";
+                    $response = "espaço indisponível";
             }
-            return $response;
+            return Array($response, $color);
         }
 
         public function ver_arquivos(){
@@ -154,9 +157,14 @@
             $infoStorage = $this->space_storage()["free"];
             $tamanho = convertData($tamanho);
             
-            delete_query("arquivo", $id, $this->connection_db);
-
-            query_update_storage($infoStorage+$tamanho, $usuario_id[0], $this->connection_db);
+            $response = delete_query("arquivo", $id, $this->connection_db);
+            if($response){
+                $responseUpdate = query_update_storage($infoStorage+$tamanho, $usuario_id[0], $this->connection_db);
+                if($responseUpdate) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 ?>

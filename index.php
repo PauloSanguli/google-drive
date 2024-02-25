@@ -15,10 +15,9 @@
         $_filesize = $_FILES["fih"]["size"];
         $_file_tmp = $_FILES["fih"]["tmp_name"];
         
-        $messageResponse = $sistema->armazenar_arquivo($_file_tmp, $_filesize, $_filename);
-        $response = json_encode($messageResponse);
+        $response = $sistema->armazenar_arquivo($_file_tmp, $_filesize, $_filename);
 
-        header("location: packages/views/main.php?response=$response");
+        header("location: packages/views/main.php?message=$response[0]&color=$response[1]");
     }
     else if(isset($_GET["sign_in"])){
         // create the account
@@ -41,8 +40,15 @@
         $sistema->login($email, $password);
         header("location: packages/views/main.php");
     }else if(isset($_GET["delete"], $_GET["tamanho"])){
-        $sistema->delete_file($_GET["id"], $_GET["tamanho"]);
-        header("location: packages/views/main.php");
+        $responseDelete = $sistema->delete_file($_GET["id"], $_GET["tamanho"]);
+        if($responseDelete) {
+            $message = "arquivo eliminado";
+            $color = "green";
+        }else{
+            $message = "arquivo não eliminado";
+            $color = "red";
+        }
+        header("location: packages/views/main.php?message=$message&color=$color");
     }
     else{
         // redirect to main page

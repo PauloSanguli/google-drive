@@ -37,12 +37,14 @@ main header .logo-header span{
     font-size: 1.3rem;
 }
 
+main header button i{padding-left: 10px;}
 main header button{
     border: none;
     background-color: rgb(42, 41, 41);
     padding: 10px 26px;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 main div.storage-user-info {
@@ -64,7 +66,7 @@ main div.storage-user-info .progress-bar{
 }
 main div.storage-user-info .progress-bar-content{
     /* background-color: var(--color-progress-bar); */
-    /* border-radius: 5px; */
+    border-radius: 5px;
 }
 main div.storage-user-info .info-storage{
     width: 30%;
@@ -277,4 +279,21 @@ main div#box-message div#box-progress{
     width: 100%;
     height: 7%;
     bottom: 0%;
+}
+main div#side-account-info {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    transition: all 1s;
+    display: none;
+}
+main div#side-account-info aside{
+    width: 400px;
+    height: 100%;
+    transform: translateX(-100%);
+    background-color: white;
+    box-shadow:  0 010px white;
+    transition: all 6s;
 }

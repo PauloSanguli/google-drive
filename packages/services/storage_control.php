@@ -17,8 +17,14 @@
     }
 
     function query_update_storage($storage, $usuario_id, $conn){
-        $query = "UPDATE `usuario` SET `espaco`=$storage WHERE `id`=$usuario_id";
-        $conn->exec($query);
+        try{
+            $query = "UPDATE `usuario` SET `espaco`=$storage WHERE `id`=$usuario_id";
+            $conn->exec($query);
+        }catch (Exception $error) {
+            echo $error;
+            return false;
+        }
+        return true;
     }
 
     // convert bytes to megabyte
