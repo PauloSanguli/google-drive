@@ -146,11 +146,10 @@
             /* delete file by id */
             $usuario_id = get_user_logged();
             $infoStorage = $this->space_storage();
-            echo json_encode($infoStorage);
+            
             delete_query("arquivo", $id, $this->connection_db);
 
             query_update_storage($infoStorage["free"]+$tamanho, $usuario_id[0], $this->connection_db);
         }
-
     }
 ?>
