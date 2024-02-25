@@ -145,11 +145,12 @@
         public function delete_file($id, $tamanho){
             /* delete file by id */
             $usuario_id = get_user_logged();
-            $infoStorage = $this->space_storage();
+            $infoStorage = $this->space_storage()["free"];
+            $tamanho = convertData($tamanho);
             
             delete_query("arquivo", $id, $this->connection_db);
 
-            query_update_storage($infoStorage["free"]+$tamanho, $usuario_id[0], $this->connection_db);
+            query_update_storage($infoStorage+$tamanho, $usuario_id[0], $this->connection_db);
         }
     }
 ?>
