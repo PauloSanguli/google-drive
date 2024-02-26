@@ -54,5 +54,4 @@
         // redirect to main page
         header("location: packages/views/main.php");
     }
-
-    ?>
+?>

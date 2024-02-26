@@ -1,7 +1,9 @@
 <?php
     // session_start();
-
-     if(!isset($_SESSION["customer_user_id"])){
-         header("location: pages/login.php");   
+    function redirectUser() {
+        if(!isset($_SESSION["customer_user_id"])){
+            header("location: pages/login.php?ad=9",true,302);
+        }
     }
+    redirectUser();
 ?>

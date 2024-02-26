@@ -5,16 +5,13 @@
     
     $storage = $manager_db->space_storage();
     $storage_user = $manager_db->space_storage();
-    // echo "<br><p>aa</p>";
-    // echo 312*$manager_db->tx_mb;
+
     $percent_usage = ($storage_user["used"]/$manager_db->space_total_storage)*100;
-    // echo $percent_usage;
     if($percent_usage>100){
         $percent_usage = 100;
     }else{
         $percent_usage = $percent_usage;
     }
-    // echo (int) ($storage_user["used"]/$manager_db->space_total_storage)*100;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,9 +58,6 @@
                     <span>total space</span>
                 </p>
                 <div class="content display-column align-flex-start justify-center">
-                    <!-- <p>used 80MB</p>
-                    <p>free 20MB</p>
-                    <p>total files 23</p> -->
                     <?php
                         $_used_formated = $storage_user['used'];
                         $_free_formated = $storage_user['free'];
@@ -106,7 +100,6 @@
                             <button>share</button>
                         </div>";
                     }
-                    // echo "<p>0 files</p>";
                 ?>
             </div>
         </div>
@@ -128,11 +121,13 @@
         </div>
 
         <div id="side-account-info" class="display-row justify-flex-start">
-            <aside id="screen-content"></aside>
+            <aside id="screen-content">
+                <button id="btn-close-aside-bar"><img src="../../assets/Delete_48px.png" alt=""></button>
+            </aside>
         </div>
 
         <?php
-            if(isset($_GET["message"],$_GET["color"])){
+            if(isset($_GET["message"],$_GET["color"])) {
                 $messageResponse = $_GET["message"];
                 $nameColorBoxMessage = $_GET["color"];
 
@@ -151,103 +146,13 @@
                         <div id='box-progress' style='background: $colorProgressBar;'></div>
                     </div>";
             }
-        ?>
+        ?> 
     </main>
 
-    <script>
-        const pageFile = document.getElementById("add-file-page")
-        const formScreen = document.getElementById("request-file")
-        const label = document.querySelectorAll("label")
-        var isShowed = false
-
-        pageFile.style = `
-                    width: 100%;
-                    height: 20vh;
-                    background: rgba(42,41,41,0);
-                    position: absolute;
-                    bottom: 0;
-                    // display: none;
-                    overflow: hidden;
-        `
-        formScreen.style = `
-                    transform: translateY(100%);
-                    width: 100%;
-                    height: 100%;
-                    gap: 30px;
-                    padding: 30px 100px;
-                    background: white;
-                    transition: all .5s;
-        `
-        document.getElementById("button-add").addEventListener("click", () => {
-            formScreen.style.transition = "transition: all .5s;"
-            if(isShowed){
-                displayElement = "none"
-                transformElement = "100"
-            }else{
-                transformElement = "0"
-                displayElement = "block"
-            }
-            isShowed = !isShowed
-            pageFile.style.display = displayElement
-            formScreen.style.transform = `translateY(${transformElement}%)`
-        })
-        label.forEach((element) => element.classList.add("display-column"))
-
-        var transformText = (elements) => {
-            for (const element of elements) {
-                element.innerText = Number(element.textContent).toFixed(2)
-            }
-        }
-
-        var formateFloatsDatas = () => {
-            const paragraphUsed = document.getElementById("field-used")
-            const paragraphFree = document.getElementById("field-free")
-
-            transformText([paragraphFree, paragraphUsed])
-        }
-        formateFloatsDatas()
-
-        var animateBoxMessage = () => {
-            const progressBar = document.getElementById("box-progress")
-            let stateProgress = 100
-
-            progressBar.style.transition = "all .5s"
-            setInterval(() => {
-                if(stateProgress > 0) {
-                    stateProgress -= 20
-
-                    console.log(stateProgress)
-                    progressBar.style.width = `${stateProgress}%`
-                }else{
-                    clearInterval()
-                    closeBoxMessage()
-                }
-            }, 1000)
-        }
-        animateBoxMessage()
-
-        var closeBoxMessage = () => {
-            document.getElementById("box-message").style.left = "-100%"
-        }
-
-        var stateBar = true
-        document.getElementById("btn-show-side-bar").addEventListener("click", () => {
-            alert("tester")
-            let aside = document.getElementById("screen-content")
-            let div = document.getElementById("side-account-info")
-            if(stateBar){
-                aside.style.transform = "translateX(0%)"
-                div.style.display = "row"
-            }else{
-                aside.style.transform = "translateX(-100%)"
-                div.style.display = "none"
-            }
-            stateBar = !stateBar
-        })
-    </script>
+    <script src="src/js/scripts.js"></script>
 </body>
 </html>
 
 <?php
     require("session.php");
-?> 
+?>

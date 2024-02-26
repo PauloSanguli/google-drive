@@ -1,7 +1,7 @@
 <?php
     include("server/querys_db.php");
     include("server/connection_db.php");
-    include("login.php");
+    include("loginFuncs.php");
     include("storage_control.php");
     include("auth.php");
     
