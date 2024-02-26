@@ -121,8 +121,24 @@
         </div>
 
         <div id="side-account-info" class="display-row justify-flex-start">
-            <aside id="screen-content">
-                <button id="btn-close-aside-bar"><img src="../../assets/Delete_48px.png" alt=""></button>
+            <aside id="screen-content" class="display-column align-flex-start">
+                <p>Account info</p>
+                <button id="btn-close-aside-bar"><img src="../../assets/cancelar.png" alt=""></button>
+                <img src="../../assets/avatar.jpg" alt="avatar user" width="140px">
+                <div id="fields" class="display-column justify-space-between">
+                    <?php
+                        $userDatas = $manager_db->datas_user();
+                        $userDatas = Array(
+                            "name"=>$userDatas["nome"],
+                            "espaco"=>$userDatas["espaco"],
+                            "email"=>$userDatas["email"]
+                        );
+
+                        foreach ($userDatas as $key => $item) {
+                            echo "<p>$key: $item</p>";
+                        }
+                    ?>
+                </div>
             </aside>
         </div>
 

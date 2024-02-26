@@ -1,3 +1,15 @@
-main div#side-account-info{
-
+main div#side-account-info aside#screen-content{
+    gap: 40px;
+    color: white;
+    background-color: rgb(41,41,41);
+    padding-top: 50px;
+    padding-left: 30px;
+}
+main div#side-account-info aside#screen-content img{
+    border-radius: 50%;
+}
+main div#side-account-info aside#screen-content div#fields{
+    height: 20vh;
+    border-left: 3px solid white;
+    padding-left: 20px;
 }
